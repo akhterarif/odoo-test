@@ -61,7 +61,7 @@ class Session(models.Model):
     # counts the total number of attendees
     attendees_count = fields.Integer(
         string="Attendees count", compute='_get_attendees_count', store=True)
-        
+
     color = fields.Integer()
 
     @api.depends('seats', 'attendee_ids')

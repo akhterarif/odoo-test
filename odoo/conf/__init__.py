@@ -16,7 +16,7 @@ must be used.
 """
 
 # Paths to search for OpenERP addons.
-addons_paths = []
+addons_paths = ['/opt/odoo/odoo/addons', '/opt/odoo/odoo/custom_modules']
 
 # List of server-wide modules to load. Those modules are supposed to provide
 # features not necessarily tied to a particular database. This is in contrast

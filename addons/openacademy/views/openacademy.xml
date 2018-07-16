@@ -9,10 +9,14 @@
         <field name="model">openacademy.course</field>
         <field name="arch" type="xml">
             <form string="Course Form">
+                <header >
+                    <field name="stage" widget="statusbar"/>
+                </header>
                 <sheet>
                     <group>
                         <field name="name"/>
                         <field name="responsible_id"/>
+                        <field name="stage"/>
                     </group>
                     <notebook>
                         <page string="Description">
@@ -58,6 +62,7 @@
             <tree string="Course Tree">
                 <field name="name"/>
                 <field name="responsible_id"/>
+                <field name="stage"/>
             </tree>
         </field>
     </record>
@@ -255,5 +260,28 @@
                 view_mode="form"
                 target="new"
                 key2="client_action_multi"/> -->
+
+
+    <!-- Showing openacademy on sales menu -->
+    <record model="ir.ui.view" id="view_rfq_comparison_tree">
+        <field name="name">view.rfq.comparison.tree</field>
+        <field name="model">purchase.requisition</field>
+        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="RFQ List">
+                    <field name="purchase_ids" domain="[('state', 'in', ('draft',))]">
+                        <tree string="RFQs" editable="bottom">
+                            <field name="name" />
+                            <field name="partner_id" attrs="{'readonly' : [('state', 'in', ('draft',))]}" />
+                            <field name="notes"/>
+                            <field name="amount_total" />
+                            <field name="state" />
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
 
 </odoo>

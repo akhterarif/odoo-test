@@ -9,7 +9,7 @@ from odoo.tools import consteq
 
 
 class PortalAccount(CustomerPortal):
-    
+
     def _get_account_invoice_domain(self):
         partner = request.env.user.partner_id
         domain = [
